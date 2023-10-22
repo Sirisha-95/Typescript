@@ -6,6 +6,7 @@ function display(ip1: number | string, ip2: number | string) {
 
 display("hello", 1);
 
+//---------------------------------
 //literal types
 function display1(
   ip1: number | string,
@@ -22,6 +23,7 @@ function display1(
 
 display1("hello", 1, "as-number");
 
+//--------------------------------------------
 //TYPE ALIASES / CUSTOM TYPES
 
 type Combine = number | string; //custom type
@@ -45,3 +47,27 @@ display2("hello", 1, "as-number");
 type User = { name: string; age: number };
 
 const u1: User = { name: "siri", age: 27 };
+
+//--------------------------
+//UNKNOWN - check the current that is stored in the variable
+let userInput: unknown;
+userInput = 5;
+userInput = "Siri";
+
+let name1: string;
+if (typeof userInput === "string") name1 = userInput; //unknow type is more restrictive compared to any type
+//In the above case defining userInput:any and not checking the type will not throw compilation error ;
+
+//------------------------
+//NEVER type
+// example of utility func
+
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+
+const result = generateError("An error occured", 500);
+console.log(result); // nothing is returned not even undefined.
+// the throw will abrupt the script and will not execute further and doesnt return anything
+
+//----------------------------
