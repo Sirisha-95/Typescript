@@ -71,3 +71,7 @@ console.log(textStore.getItems());
 
 // Generic utility types - Partial type where all the properties are optional 
 //Partial, Readonly
+
+
+//Union types allow to use either of the mentioned types
+// Generic types lock in a particular type
